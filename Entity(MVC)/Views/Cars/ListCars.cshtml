@@ -1,0 +1,33 @@
+﻿@*@using Start.ViewModels
+@model CarsListViewModel*@
+  
+@*@using Start.Data.Models
+@model IEnumerable<Car>*@
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cars</title>
+</head>
+<body>
+    <h1>@ViewBag.Title</h1>
+    <h3>@Model.CarCategory</h3>
+    <div class="row mt-5 mb-2">
+        @{
+            
+                foreach (Car car in Model.GetCars)
+                {
+                    @await Html.PartialAsync("_CarCard", car)
+                }
+            
+        }
+    </div>
+
+
+</body>
+</html>

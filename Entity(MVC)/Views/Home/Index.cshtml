@@ -1,0 +1,12 @@
+﻿<h1>@ViewBag.Title</h1>
+
+<div class="row mt-5 mb-2">
+    @{
+
+        foreach (Car car in Model.CarAvailable)
+        {
+            @await Html.PartialAsync("_CarCard", car)
+        }
+
+    }
+</div>
