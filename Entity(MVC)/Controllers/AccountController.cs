@@ -37,37 +37,40 @@ namespace Entity_MVC_.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                return View(model);
+                return View();
             }
 
             var user = _context.Users.FirstOrDefault(u => u.Email == model.Email);
-            if(user==null)
+
+            if (user == null)
             {
                 ModelState.AddModelError("", "Некорректный логин");
                 return View(model);
             }
 
             var result = _signInManager
-              .PasswordSignInAsync(user, model.Password, false, false).Result;
+               .PasswordSignInAsync(user, model.Password, false, false).Result;
+
 
             if (!result.Succeeded)
             {
-                ModelState.AddModelError("", "Некорректный пароль");
+                ModelState.AddModelError("", "Некорректные пароль");
                 return View(model);
             }
 
             await _signInManager.SignInAsync(user, isPersistent: false);
 
-            await Authenticate(model.Email); // аутентификация
+           
+                await Authenticate(model.Email); // аутентификация
 
-            return RedirectToAction("Index", "Home");
-
+                return RedirectToAction("Index", "Home");
+            
         }
+
 
         [HttpGet]
         public IActionResult Register()
@@ -145,6 +148,20 @@ namespace Entity_MVC_.Controllers
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
             // установка аутентификационных куки
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return RedirectToAction("Login", "Account");
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            //await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Account");
         }
     }
 }

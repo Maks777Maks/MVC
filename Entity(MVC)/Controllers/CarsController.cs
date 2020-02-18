@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Entity_MVC_.Data.Interfaces;
 using Entity_MVC_.ViewModels;
 using Entity_MVC_.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Entity_MVC_.Controllers
 {
+    
     public class CarsController : Controller
     {
         private readonly ICars _cars;
@@ -20,7 +22,7 @@ namespace Entity_MVC_.Controllers
             _category = category;
         }
 
-
+        [Authorize(Roles = "User")]
         [Route("Cars/ListCars")]
         [Route("Cars/ListCars/{category}")]
         public ViewResult ListCars(string category, string id)

@@ -30,5 +30,4 @@ C:\Users\Novak\Desktop\HTML LESSONS\MVC(CORE)\Entity(MVC)\Entity(MVC)\obj\Debug\
 C:\Users\Novak\Desktop\HTML LESSONS\MVC(CORE)\Entity(MVC)\Entity(MVC)\obj\Debug\netcoreapp2.2\Razor\Views\Cars\ListCars.g.cshtml.cs
 C:\Users\Novak\Desktop\HTML LESSONS\MVC(CORE)\Entity(MVC)\Entity(MVC)\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CarCard.g.cshtml.cs
 C:\Users\Novak\Desktop\HTML LESSONS\MVC(CORE)\Entity(MVC)\Entity(MVC)\obj\Debug\netcoreapp2.2\Razor\Views\Account\Register.g.cshtml.cs
-C:\Users\Novak\Desktop\HTML LESSONS\MVC(CORE)\Entity(MVC)\Entity(MVC)\obj\Debug\netcoreapp2.2\Entity(MVC).csprojAssemblyReference.cache
 C:\Users\Novak\Desktop\HTML LESSONS\MVC(CORE)\Entity(MVC)\Entity(MVC)\obj\Debug\netcoreapp2.2\Razor\Views\Account\Login.g.cshtml.cs
